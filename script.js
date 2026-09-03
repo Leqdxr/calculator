@@ -45,6 +45,11 @@ let savedOperator = ''
 
 operator.forEach( (op) => {
     op.addEventListener('click', (e) => {
+        if(e.target.innerHTML==="-" && screenValue === '') {
+            screenValue = '-'
+            display.innerHTML = screenValue
+            return
+        }
         value1 = parseInt(display.innerHTML)
         if(isNaN(value1)) {
             value1 = 0
@@ -56,11 +61,11 @@ operator.forEach( (op) => {
 
 const equal = document.getElementById('equal')
 equal.addEventListener('click', ()=>{
-    value2 = parseInt(screenValue)
     if (screenValue === '') {
         display.innerHTML = ''
         return
     }
+    value2 = parseInt(screenValue)
     switch (savedOperator) {
     case '+':
         result = add(value1,value2)
