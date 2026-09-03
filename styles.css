@@ -34,12 +34,12 @@ button {
     height: 100vh;
 }
 
-.operation {
+.operator {
     background-color: #fb4934;
     color: #fbf1c7; 
 }
 
-.operation#clear {
+#clear {
     background-color: #8ec07c;
 }
 
