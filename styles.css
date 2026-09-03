@@ -12,6 +12,8 @@ body {
     align-items: center;
     justify-content: flex-end;
     font-size: 32px;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .keys {
