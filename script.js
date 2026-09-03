@@ -28,6 +28,10 @@ function divide(value1,value2) {
 }
 
 function calculate(savedOperator,value1,value2) {
+
+    if(isNaN(value1) || isNaN(value2)) {
+        return "Error"
+    }
     switch (savedOperator) {
     case '+':
         return add(value1,value2)
@@ -88,4 +92,5 @@ equal.addEventListener('click', ()=>{
     result = calculate(savedOperator,value1,value2)
     display.innerHTML = result
     screenValue = ''
+    savedOperator = ''
 })
