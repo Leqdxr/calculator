@@ -8,6 +8,10 @@ body {
     width: 300px;
     background-color: #fbf1c7;
     border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 32px;
 }
 
 .keys {
