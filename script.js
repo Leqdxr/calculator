@@ -27,6 +27,19 @@ function divide(value1,value2) {
         return (value1 / value2).toFixed(2)
 }
 
+function calculate(savedOperator,value1,value2) {
+    switch (savedOperator) {
+    case '+':
+        return add(value1,value2)
+    case '*':
+        return multiply(value1,value2)
+    case '-':
+        return subtract(value1,value2)
+    case '/':
+        return divide(value1,value2)
+}
+}
+
 
 clear.addEventListener('click',() => {
     screenValue = ''
@@ -50,9 +63,15 @@ operator.forEach( (op) => {
             display.innerHTML = screenValue
             return
         }
-        value1 = parseInt(display.innerHTML)
-        if(isNaN(value1)) {
-            value1 = 0
+        if(savedOperator !== '' && screenValue !== '') {
+            value2 = parseInt(screenValue)
+            value1 = calculate(savedOperator,value1,value2)
+        }
+        else {
+            value1 = parseInt(display.innerHTML)
+            if(isNaN(value1)) {
+                value1 = 0
+            }
         }
         screenValue = ''
         savedOperator = e.target.innerHTML
@@ -66,20 +85,7 @@ equal.addEventListener('click', ()=>{
         return
     }
     value2 = parseInt(screenValue)
-    switch (savedOperator) {
-    case '+':
-        result = add(value1,value2)
-        break;
-    case '*':
-        result = multiply(value1,value2)
-        break;
-    case '-':
-        result = subtract(value1,value2)
-        break;
-    case '/':
-        result = divide(value1,value2)
-        break;
-}
+    result = calculate(savedOperator,value1,value2)
     display.innerHTML = result
     screenValue = ''
 })
