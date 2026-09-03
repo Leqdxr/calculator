@@ -41,33 +41,40 @@ key.forEach( (number) => {
 } )
 
 let result
+let savedOperator = ''
 
 operator.forEach( (op) => {
     op.addEventListener('click', (e) => {
-        value1 = parseInt(screenValue)
-        screenValue = ''
-        switch (e.target.innerHTML) {
-            case '+':
-                value2 = parseInt(screenValue)
-                result = add(value1,value2)
-                break;
-            case '*':
-                value2 = parseInt(screenValue)
-                result = multiply(value1,value2)
-                break;
-            case '-':
-                value2 = parseInt(screenValue)
-                result = subtract(value1,value2)
-                break;
-            case '/':
-                value2 = parseInt(screenValue)
-                result = divide(value1,value2)
-                break;
+        value1 = parseInt(display.innerHTML)
+        if(isNaN(value1)) {
+            value1 = 0
         }
+        screenValue = ''
+        savedOperator = e.target.innerHTML
     })
 } )
 
 const equal = document.getElementById('equal')
 equal.addEventListener('click', ()=>{
+    value2 = parseInt(screenValue)
+    if (screenValue === '') {
+        display.innerHTML = ''
+        return
+    }
+    switch (savedOperator) {
+    case '+':
+        result = add(value1,value2)
+        break;
+    case '*':
+        result = multiply(value1,value2)
+        break;
+    case '-':
+        result = subtract(value1,value2)
+        break;
+    case '/':
+        result = divide(value1,value2)
+        break;
+}
     display.innerHTML = result
+    screenValue = ''
 })
