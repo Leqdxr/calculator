@@ -9,15 +9,15 @@ let value1 = 0
 let value2 = 0
 
 function add(value1,value2) {
-    return value1 + value2
+    return (value1 + value2).toFixed(2)
 }
 
 function subtract(value1,value2) {
-    return value1 - value2
+    return (value1 - value2).toFixed(2)
 }
 
 function multiply(value1,value2) {
-    return value1 * value2
+    return (value1 * value2).toFixed(2)
 }
 
 function divide(value1,value2) {
@@ -52,6 +52,9 @@ clear.addEventListener('click',() => {
 
 key.forEach( (number) => {
     number.addEventListener('click', (e) => {
+        if(e.target.innerHTML === "." && screenValue.includes(".")) {
+            return
+        }
         screenValue += e.target.innerHTML
         display.textContent = screenValue
     } )
@@ -68,11 +71,11 @@ operator.forEach( (op) => {
             return
         }
         if(savedOperator !== '' && screenValue !== '') {
-            value2 = parseInt(screenValue)
+            value2 = parseFloat(screenValue)
             value1 = calculate(savedOperator,value1,value2)
         }
         else {
-            value1 = parseInt(display.innerHTML)
+            value1 = parseFloat(display.innerHTML)
             if(isNaN(value1)) {
                 value1 = 0
             }
@@ -88,7 +91,7 @@ equal.addEventListener('click', ()=>{
         display.innerHTML = ''
         return
     }
-    value2 = parseInt(screenValue)
+    value2 = parseFloat(screenValue)
     result = calculate(savedOperator,value1,value2)
     display.innerHTML = result
     screenValue = ''
