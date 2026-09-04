@@ -48,6 +48,9 @@ function calculate(savedOperator,value1,value2) {
 clear.addEventListener('click',() => {
     screenValue = ''
     display.innerHTML = ''
+    savedOperator = ''
+    value1 = 0
+    value2 = 0
 })
 
 key.forEach( (number) => {
