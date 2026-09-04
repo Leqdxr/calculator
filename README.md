@@ -1,6 +1,6 @@
 # Calculator
 
-A simple calculator app (but decimals aren't supported)
+A simple calculator app. Color scheme used for calculator: [Nord](https://github.com/nordtheme/nord)
 
 ## How to use
 
